@@ -89,6 +89,87 @@ app.get('/api/premium-data',
 );
 ```
 
+## Registering on x402scan
+
+**Make your service discoverable** by registering it on x402scan.
+
+### Registration Endpoint
+
+```bash
+POST https://x402scan.com/api/v1/resources
+Content-Type: application/json
+
+{
+  "url": "https://your-service.com/api/your-endpoint"
+}
+```
+
+### Your Endpoint Must Return
+
+When x402scan validates your URL, it expects HTTP 402 (or 200) with:
+
+```json
+{
+  "x402Version": 1,
+  "name": "My AI Service",
+  "image": "https://your-service.com/logo.png",
+  "accepts": [{
+    "scheme": "exact",
+    "network": "stacks",
+    "asset": "STX",
+    "maxAmountRequired": "1000000",
+    "resource": "https://your-service.com/api/your-endpoint",
+    "description": "What this service does",
+    "mimeType": "application/json",
+    "payTo": "SP2...YOUR_ADDRESS",
+    "maxTimeoutSeconds": 60,
+    "outputSchema": {
+      "input": {
+        "type": "https",
+        "method": "GET",
+        "queryParams": {
+          "q": { "type": "string", "required": true, "description": "Query param" }
+        }
+      },
+      "output": {
+        "type": "object",
+        "properties": { "result": { "type": "string" } }
+      }
+    }
+  }]
+}
+```
+
+### Validation Requirements
+
+| Must Have | Error if Missing |
+|-----------|------------------|
+| HTTPS URL | `invalid_url` |
+| Non-empty `name` | `invalid_name` |
+| At least 1 `accepts` entry | `empty_accepts` |
+| `network: "stacks"` in all accepts | `invalid_network` |
+| `outputSchema` in all accepts | `missing_output_schema` |
+
+### Why outputSchema Matters
+
+The `outputSchema` tells agents HOW to call your service:
+- `input.method` - HTTP method (GET/POST)
+- `input.queryParams` - Query parameters (for GET)
+- `input.bodyFields` - Body structure (for POST)
+- `output` - Response format
+
+This is the contract agents use to call your service programmatically.
+
+### Quick Registration Example
+
+```bash
+curl -X POST https://x402scan.com/api/v1/resources \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://your-service.com/api/endpoint"}'
+```
+
+**After registration:** Your service appears in the x402scan directory and gets re-validated every 24h.
+
 ## Quick Reference
 
 | Function | Purpose | Returns |
@@ -151,3 +232,4 @@ FACILITATOR_URL=https://facilitator.stacksx402.com
 - Testnet Faucet: https://explorer.stacks.co/sandbox/faucet?chain=testnet
 - Stacks Explorer: https://explorer.stacks.co/
 - Free Facilitator: https://facilitator.stacksx402.com
+- x402scan Registry: https://x402scan.com
