@@ -96,7 +96,7 @@ app.get('/api/premium-data',
 ### Registration Endpoint
 
 ```bash
-POST https://x402scan.com/api/v1/resources
+POST https://scan.stacksx402.com/api/v1/resources
 Content-Type: application/json
 
 {
@@ -163,7 +163,7 @@ This is the contract agents use to call your service programmatically.
 ### Quick Registration Example
 
 ```bash
-curl -X POST https://x402scan.com/api/v1/resources \
+curl -X POST https://scan.stacksx402.com/api/v1/resources \
   -H "Content-Type: application/json" \
   -d '{"url": "https://your-service.com/api/endpoint"}'
 ```
@@ -232,4 +232,4 @@ FACILITATOR_URL=https://facilitator.stacksx402.com
 - Testnet Faucet: https://explorer.stacks.co/sandbox/faucet?chain=testnet
 - Stacks Explorer: https://explorer.stacks.co/
 - Free Facilitator: https://facilitator.stacksx402.com
-- x402scan Registry: https://x402scan.com
+- x402scan Registry: https://scan.stacksx402.com
