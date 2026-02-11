@@ -2,9 +2,30 @@
 
 Agent skill for implementing HTTP 402 payment-required endpoints on Stacks blockchain using the x402-stacks SDK.
 
+📖 **[Read the Complete Tutorial →](TUTORIAL.md)**
+
 ## What is x402-stacks?
 
 x402-stacks enables **automatic HTTP-level payments** for APIs using STX or sBTC tokens on Stacks blockchain. This skill helps agents quickly implement micropayment systems using the x402 protocol.
+
+## Quick Start
+
+Want to build a paid API in minutes? Try this:
+
+1. Install the skill:
+   ```bash
+   npx skills add tony1908/x402stacks-skill --skill x402-stacks -a claude-code
+   ```
+
+2. Start a new project and ask Claude:
+   ```
+   using the x402 stacks skill, create a basic echo api protected with x402,
+   I want to get paid on stx and charge .01 stx per request
+   ```
+
+3. Claude handles the rest! ✨
+
+📖 **[Full Tutorial with Step-by-Step Guide →](TUTORIAL.md)**
 
 ## Installation
 
