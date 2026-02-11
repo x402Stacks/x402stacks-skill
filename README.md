@@ -12,13 +12,13 @@ Install this skill using the [skills CLI](https://www.npmjs.com/package/skills):
 
 ```bash
 # Install to Claude Code (or your preferred agent)
-npx skills add <YOUR_GITHUB_USERNAME>/x402stacks-skill --skill x402-stacks
+npx skills add tony1908/x402stacks-skill --skill x402-stacks
 
 # Install globally
-npx skills add <YOUR_GITHUB_USERNAME>/x402stacks-skill --skill x402-stacks -g
+npx skills add tony1908/x402stacks-skill --skill x402-stacks -g
 
 # List available skills first
-npx skills add <YOUR_GITHUB_USERNAME>/x402stacks-skill --list
+npx skills add tony1908/x402stacks-skill --list
 ```
 
 ## What This Skill Provides
